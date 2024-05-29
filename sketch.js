@@ -59,7 +59,7 @@ function drawArt() {
   drawSingleGrids();
 }
 
-//mouse press changed color
+//mouse press changed color （random color）
 function mousePressed() {
   for (let i = 0; i < rectangles.length; i++) {
     let rect = rectangles[i];
@@ -75,7 +75,7 @@ function mousePressed() {
   }
 }
 
-// keyboard press
+// keyboard press their positon
 function keyPressed() {
   if (key === 'a') {
     moveRectangles(-1, 0);

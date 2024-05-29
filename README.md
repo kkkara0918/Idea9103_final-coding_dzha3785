@@ -21,3 +21,6 @@ S key: Move the rectangle down.
 D key: Move the rectangle right.
 
 Steps: After the page is loaded, press the above keyboard keys to see the rectangle move as a whole.
+
+4. #### References to inspiration for animating your individual code; these can be images (still or gifs). How did they influence your submission?
+The painting initially seemed to be based on lines running through it, mainly yellow (closely related to New York City I in this respect) and some connecting bands of different colors, which led to changes in direction and proportion. To this basic composition, small blocks of red, blue, gray, and sometimes the same yellow as the horizontal lines were added, giving the whole a new rhythm, a completely unexpected movement, a bouncing staccato rhythm. So I changed the movement and color of the blocks through keyboard and mouse to better match the meaning of the painting itself.
