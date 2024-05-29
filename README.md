@@ -8,6 +8,7 @@ I choose interaction to drive my individual code.
 3. #### Instructions on how to interact with the work 
 - Mouse pressed
 Click on a rectangle: Click on any rectangle on the artwork and the color of the rectangle will change randomly. This can create a dynamic color change effect.
+
 Steps: Move the mouse to the big rectangle whose color you want to change, click the left mouse button, and you can see the color of the rectangle change.
 
 - Keyboard pressed
@@ -16,4 +17,5 @@ W key: Move the rectangle up.
 A key: Move the rectangle left. 
 S key: Move the rectangle down. 
 D key: Move the rectangle right.
+
 Steps: After the page is loaded, press the above keyboard keys to see the rectangle move as a whole.
