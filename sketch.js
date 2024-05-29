@@ -178,6 +178,7 @@ function drawLines(){
       drawRectangle(rect[0], rect[1], rect[2], rect[3], rect[4]);
     }
 
+   
   //Single grid coloring - 0
   fillGrid(3,0,red);
   fillGrid(11,0,red);
