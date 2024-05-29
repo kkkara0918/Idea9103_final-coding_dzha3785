@@ -1,20 +1,100 @@
 let gridSize = 50;
 let canvasSize = 800;
 
-let yellow = '#ffd800'
-let red = '#A2362A'
-let gray = '#DADBD5'
-let blue = '#4B66C1'
+let yellow = '#ffd800';
+let red = '#A2362A';
+let gray = '#DADBD5';
+let blue = '#4B66C1';
+let white = '#FFFFFF';
+
+let rectangles = [
+  [7, 3, 11, 5, yellow],
+  [8, 2, 10, 8, red], 
+  [8, 5, 10, 6, gray], 
+  [13, 2, 17, 7, red],
+  [14, 4, 16, 6, gray],
+  [13, 7, 17, 8, gray],
+  [45, 5, 48, 7, blue],
+  [4, 10, 7, 12, blue],
+  [7, 13, 11, 16, yellow],
+  [8, 14, 10, 15, gray],
+  [32, 9, 37, 17, blue],
+  [32, 11, 37, 15, red],
+  [33, 12, 36, 14, yellow],
+  [44, 10, 47, 13, red],
+  [8, 17, 10, 21, yellow],
+  [8.5, 19, 9.5, 20, gray],
+  [19, 17, 23, 27, yellow],
+  [7, 24, 11, 27, red],
+  [13.5, 22, 17, 23, yellow],
+  [13.5, 23, 17, 27, blue],
+  [14, 24.3, 16.4, 26, yellow],
+  [19, 22.8, 23, 25.7, gray],
+  [33.5, 22, 38, 28.7, red],
+  [34.5, 23.5, 37.2, 25.8, gray],
+  [33.5, 28.7, 38, 30, gray],
+  [43, 23, 48, 26, yellow],
+  [45, 23, 46, 26, red],
+  [4, 32, 7, 35, blue],
+  [43, 32, 46, 35, blue],
+  [43, 35, 46, 37, yellow],
+  [43, 37, 46, 40, red],
+  [7, 38, 11, 42, yellow],
+  [8.5, 39, 10, 40.2, gray],
+  [21, 48, 25, 49.8, red],
+];
 
 function setup() {
   createCanvas(canvasSize, canvasSize);
-  noLoop(); // Ensure draw() is called only once
+  noLoop();
+  drawArt();
 }
 
-function draw() {
+function drawArt() {
   background(255);
   drawGrid();
   drawLines();
+  drawRectangles();
+  drawSingleGrids();
+}
+
+//mouse press changed color
+function mousePressed() {
+  for (let i = 0; i < rectangles.length; i++) {
+    let rect = rectangles[i];
+    let x1 = rect[0] * (canvasSize / gridSize);
+    let y1 = rect[1] * (canvasSize / gridSize);
+    let x2 = rect[2] * (canvasSize / gridSize);
+    let y2 = rect[3] * (canvasSize / gridSize);
+    if (mouseX > x1 && mouseX < x2 && mouseY > y1 && mouseY < y2) {
+      rectangles[i][4] = color(random(255), random(255), random(255));
+      drawArt();
+      break;
+    }
+  }
+}
+
+// keyboard press
+function keyPressed() {
+  if (keyCode === LEFT_ARROW) {
+    moveRectangles(-1, 0);
+  } else if (keyCode === RIGHT_ARROW) {
+    moveRectangles(1, 0);
+  } else if (keyCode === UP_ARROW) {
+    moveRectangles(0, -1);
+  } else if (keyCode === DOWN_ARROW) {
+    moveRectangles(0, 1);
+  }
+}
+
+function moveRectangles(dx, dy) {
+  for (let i = 0; i < rectangles.length; i++) {
+    rectangles[i][0] += dx;
+    rectangles[i][1] += dy;
+    rectangles[i][2] += dx;
+    rectangles[i][3] += dy;
+  }
+  drawArt();
 }
 
 // draw grid lines
@@ -100,7 +180,6 @@ function drawLines(){
     drawLine(0, y1s[i], 50, y1s[i], yellow);
   }
   // vertical partial lines
-  // let vps = [1,28,31,44,46];
   let vps = [
     [1,0,1,y1s[2]], 
     [28,0,28,y1s[2]], 
@@ -125,66 +204,37 @@ function drawLines(){
   for (let hp of hps) {
     drawLine(hp[0], hp[1], hp[2], hp[3],yellow);
   }
+}
 
+function drawRectangle(x1, y1, x2, y2, color) {
+  fill(color);
+  noStroke();
+  let width = (x2 - x1) * (canvasSize / gridSize);
+  let height = (y2 - y1) * (canvasSize / gridSize);
+  rect(x1 * (canvasSize / gridSize), y1 * (canvasSize / gridSize), width, height);
+}
 
-
-  function drawRectangle(x1, y1, x2, y2, color) {
-    fill(color);
-    noStroke();
-    let width = (x2 - x1) * (canvasSize / gridSize);
-    let height = (y2 - y1) * (canvasSize / gridSize);
-    rect(x1 * (canvasSize / gridSize), y1 * (canvasSize / gridSize), width, height);
+function drawRectangles() {
+  for (let rect of rectangles) {
+    drawRectangle(rect[0], rect[1], rect[2], rect[3], rect[4]);
   }
-  
-  let rectangles = [
-    // [Upper left corner x, upper left corner y, lower right corner x, lower right corner y, color]
-    [7, 3, 11, 5, yellow],
-    [8, 2, 10, 8, red], 
-    [8, 5, 10, 6, gray], 
-    [13, 2, 17, 7, red],
-    [14, 4, 16, 6, gray],
-    [13, 7, 17, 8, gray],
-    [45, 5, 48, 7, blue],
-    [4, 10, 7, 12, blue],
-    [7, 13, 11, 16, yellow],
-    [8, 14, 10, 15, gray],
-    [32, 9, 37, 17, blue],
-    [32, 11, 37, 15, red],
-    [33, 12, 36, 14, yellow],
-    [44, 10, 47, 13, red],
-    [8, 17, 10, 21, yellow],
-    [8.5, 19, 9.5, 20, gray],
-    [19, 17, 23, 27, yellow],
-    [7, 24, 11, 27, red],
-    [13.5, 22, 17, 23, yellow],
-    [13.5, 23, 17, 27, blue],
-    [14, 24.3, 16.4, 26, yellow],
-    [19, 22.8, 23, 25.7, gray],
-    [33.5, 22, 38, 28.7, red],
-    [34.5, 23.5, 37.2, 25.8, gray],
-    [33.5, 28.7, 38, 30, gray],
-    [43, 23, 48, 26, yellow],
-    [45, 23, 46, 26, red],
-    [4, 32, 7, 35, blue],
-    [43, 32, 46, 35, blue],
-    [43, 35, 46, 37, yellow],
-    [43, 37, 46, 40, red],
-    [7, 38, 11, 42, yellow],
-    [8.5, 39, 10, 40.2, gray],
-    [21, 48, 25, 49.8, red],
-    
-  ];
-    for (let rect of rectangles) {
-      drawRectangle(rect[0], rect[1], rect[2], rect[3], rect[4]);
-    }
+}
 
-   
+function drawSingleGrids() {
   //Single grid coloring - 0
+  fillGrid(0,0,white);
+  fillGrid(2,0,white);
+  fillGrid(4,0,white)
+  fillGrid(5,0,white);
   fillGrid(3,0,red);
   fillGrid(11,0,red);
   fillGrid(26,0,red);
+  fillGrid(43,0,white);
   fillGrid(44,0,red);
+  fillGrid(45,0,white);
+  fillGrid(47,0,white);
   fillGrid(48,0,red);
+  fillGrid(49,0,white);
   //Single grid coloring - 1
   fillGrid(1,1,blue);
   fillGrid(7.5,1,blue);
@@ -237,6 +287,9 @@ function drawLines(){
   fillGrid(26,7,gray);
   fillGrid(28,7,gray);
   fillGrid(44,7,gray);
+  fillGrid(45,7,white);
+  fillGrid(46,7,white);
+  fillGrid(47,7,white);
   fillGrid(48,7,gray);
   //Single grid coloring - 8
   fillGrid(1,8,red);
@@ -261,9 +314,12 @@ function drawLines(){
   fillGrid(48,8,blue);
   //Single grid coloring - 9
   fillGrid(3,9,gray);
+  fillGrid(4,9,white);
+  fillGrid(5,9,white);
   fillGrid(11,9,gray);
   fillGrid(28,9,gray);
   fillGrid(44,9,gray);
+  fillGrid(45,9,white);
   fillGrid(46,9,gray);
   fillGrid(48,9,gray);
   //Single grid coloring - 11
@@ -419,6 +475,7 @@ function drawLines(){
   fillGrid(26,31,red);
   fillGrid(28,31,blue);
   fillGrid(42,31,gray);
+  fillGrid(43,31,white);fillGrid(44,31,white);fillGrid(45,31,white);
   fillGrid(46,31,gray);
   fillGrid(48,31,gray);
   fillGrid(3,32,gray);
@@ -524,11 +581,10 @@ function drawLines(){
   //Single grid coloring - (48~49)
   fillGrid(42,48,gray);
 
-  function draw() {
-    background(220);
-    drawGrid();
-    drawLines();
-    drawRectangles();
-  }  
-
+  // function draw() {
+  //   background(220);
+  //   drawGrid();
+  //   drawLines();
+  //   drawRectangles();
+  // }  
 }
