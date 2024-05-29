@@ -5,7 +5,6 @@ let yellow = '#ffd800'
 let red = '#A2362A'
 let gray = '#DADBD5'
 let blue = '#4B66C1'
-let white = '#00000'
 
 function setup() {
   createCanvas(canvasSize, canvasSize);
@@ -180,19 +179,11 @@ function drawLines(){
     }
 
   //Single grid coloring - 0
-  fillGrid(0,0,white);
-  fillGrid(2,0,white);
-  fillGrid(4,0,white)
-  fillGrid(5,0,white);
   fillGrid(3,0,red);
   fillGrid(11,0,red);
   fillGrid(26,0,red);
-  fillGrid(43,0,white);
   fillGrid(44,0,red);
-  fillGrid(45,0,white);
-  fillGrid(47,0,white);
   fillGrid(48,0,red);
-  fillGrid(49,0,white);
   //Single grid coloring - 1
   fillGrid(1,1,blue);
   fillGrid(7.5,1,blue);
@@ -245,9 +236,6 @@ function drawLines(){
   fillGrid(26,7,gray);
   fillGrid(28,7,gray);
   fillGrid(44,7,gray);
-  fillGrid(45,7,white);
-  fillGrid(46,7,white);
-  fillGrid(47,7,white);
   fillGrid(48,7,gray);
   //Single grid coloring - 8
   fillGrid(1,8,red);
@@ -272,12 +260,9 @@ function drawLines(){
   fillGrid(48,8,blue);
   //Single grid coloring - 9
   fillGrid(3,9,gray);
-  fillGrid(4,9,white);
-  fillGrid(5,9,white);
   fillGrid(11,9,gray);
   fillGrid(28,9,gray);
   fillGrid(44,9,gray);
-  fillGrid(45,9,white);
   fillGrid(46,9,gray);
   fillGrid(48,9,gray);
   //Single grid coloring - 11
@@ -433,7 +418,6 @@ function drawLines(){
   fillGrid(26,31,red);
   fillGrid(28,31,blue);
   fillGrid(42,31,gray);
-  fillGrid(43,31,white);fillGrid(44,31,white);fillGrid(45,31,white);
   fillGrid(46,31,gray);
   fillGrid(48,31,gray);
   fillGrid(3,32,gray);
