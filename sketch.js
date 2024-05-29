@@ -48,6 +48,7 @@ function setup() {
   createCanvas(canvasSize, canvasSize);
   noLoop();
   drawArt();
+  
 }
 
 function drawArt() {
@@ -76,16 +77,17 @@ function mousePressed() {
 
 // keyboard press
 function keyPressed() {
-  if (keyCode === LEFT_ARROW) {
+  if (key === 'a') {
     moveRectangles(-1, 0);
-  } else if (keyCode === RIGHT_ARROW) {
+  } else if (key === 'd') {
     moveRectangles(1, 0);
-  } else if (keyCode === UP_ARROW) {
+  } else if (key === 'w') {
     moveRectangles(0, -1);
-  } else if (keyCode === DOWN_ARROW) {
+  } else if (key === 's') {
     moveRectangles(0, 1);
   }
 }
+
 
 function moveRectangles(dx, dy) {
   for (let i = 0; i < rectangles.length; i++) {
