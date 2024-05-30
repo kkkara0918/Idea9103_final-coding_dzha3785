@@ -28,5 +28,6 @@ The painting initially seemed to be based on lines running through it, mainly ye
 5. #### Which properties of the image will be animated and how？
 - Color change:  In the mousePressed function, when the user clicks a rectangle, color(random(255), random(255), random(255)) is called to generate a random color and apply it to the clicked rectangle. 
 - Position movement:  In the keyPressed function, when the user presses the a, d, w, s keys, the moveRectangles function is called to move the positions of all rectangles.
+- The transparency changes, and when the page is reloaded, the full image is displayed by clicking on the large square that appears on the page.
 
 6. ##### I didn't make a lot of changes to the group code, I just changed the order of the group code a bit to make the animation run better.
