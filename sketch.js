@@ -47,6 +47,8 @@ let rectangles = [
 let opacity = 0;
 
 function setup() {
+  //Increase screen adaptation
+  canvasSize = min(windowWidth, windowHeight);
   createCanvas(canvasSize, canvasSize);
   frameRate(50); // Setting the frame rate
 }
