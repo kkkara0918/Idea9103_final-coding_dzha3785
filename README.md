@@ -24,3 +24,9 @@ Steps: After the page is loaded, press the above keyboard keys to see the rectan
 
 4. #### References to inspiration for animating your individual code; these can be images (still or gifs). How did they influence your submission?
 The painting initially seemed to be based on lines running through it, mainly yellow (closely related to New York City I in this respect) and some connecting bands of different colors, which led to changes in direction and proportion. To this basic composition, small blocks of red, blue, gray, and sometimes the same yellow as the horizontal lines were added, giving the whole a new rhythm, a completely unexpected movement, a bouncing staccato rhythm. So I changed the movement and color of the blocks through keyboard and mouse to better match the meaning of the painting itself.
+
+5. #### Which properties of the image will be animated and how？
+- Color change:  In the mousePressed function, when the user clicks a rectangle, color(random(255), random(255), random(255)) is called to generate a random color and apply it to the clicked rectangle. 
+- Position movement:  In the keyPressed function, when the user presses the a, d, w, s keys, the moveRectangles function is called to move the positions of all rectangles.
+
+6. ##### I didn't make a lot of changes to the group code, I just changed the order of the group code a bit to make the animation run better.

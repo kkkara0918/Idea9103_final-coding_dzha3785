@@ -44,11 +44,22 @@ let rectangles = [
   [21, 48, 25, 49.8, red],
 ];
 
+let opacity = 0;
+
 function setup() {
   createCanvas(canvasSize, canvasSize);
-  noLoop();
-  drawArt();
-  
+  frameRate(50); // Setting the frame rate
+}
+
+function draw() {
+  background(255);
+  drawGrid();
+  drawRectangles();
+  opacity += 0.05; // Add transparency per frame
+  if (opacity > 1) {
+    opacity = 1;
+    noLoop(); // Stop looping after fully displayed
+  }
 }
 
 function drawArt() {
